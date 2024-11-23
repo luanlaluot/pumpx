@@ -1,17 +1,15 @@
 "use client";
 
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState([]);
 
   const handleAddUser = async () => {
-    await fetch("https://api-pumpx.up.railway.app/users", {
-      method: "post",
-      body: JSON.stringify({
-        name: "John Doe",
-        email: "2r6tR@example.com",
-      }),
+    await axios.post("https://api-pumpx.up.railway.app/users", {
+      name: "John Doe",
+      email: "2r6tR@example.com",
     });
 
     getUser();

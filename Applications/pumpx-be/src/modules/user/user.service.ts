@@ -7,9 +7,14 @@ import { User } from './user.schema';
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async create(data: Partial<User>): Promise<User> {
+  async create(data: Partial<User>): Promise<any> {
     try {
-      return new this.userModel(data).save();
+      const newUser = new this.userModel(data).save();
+
+      return {
+        success: true,
+        data: newUser,
+      };
     } catch (error) {
       console.log('🚀 ~ UserService ~ create ~ error:', error);
       throw new BadRequestException(error.message || 'Some thing went wrong');
