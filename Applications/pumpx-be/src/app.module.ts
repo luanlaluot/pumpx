@@ -19,7 +19,7 @@ import { UserModule } from './modules/user/user.module';
       signOptions: { expiresIn: '60m' }, // Optional: set expiration time for JWT
     }),
 
-    MongooseModule.forRoot(process.env.MONGODB_URI),
+    MongooseModule.forRoot(process.env.MONGO_PUBLIC_URL),
 
     //Api modules
     AuthModule,
