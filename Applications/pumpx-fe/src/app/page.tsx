@@ -11,9 +11,9 @@ export default function Home() {
       body: JSON.stringify({
         name: "John Doe",
         email: "2r6tR@example.com",
-        age: 10,
       }),
     });
+
     getUser();
   };
 
