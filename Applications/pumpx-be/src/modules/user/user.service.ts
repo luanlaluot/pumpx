@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.schema';
@@ -8,7 +8,12 @@ export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async create(data: Partial<User>): Promise<User> {
-    return new this.userModel(data).save();
+    try {
+      return new this.userModel(data).save();
+    } catch (error) {
+      console.log('🚀 ~ UserService ~ create ~ error:', error);
+      throw new BadRequestException(error.message || 'Some thing went wrong');
+    }
   }
 
   async findAll(): Promise<User[]> {
