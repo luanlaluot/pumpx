@@ -37,7 +37,7 @@ export default function Home() {
           Add user
         </button>
 
-        {data.map((user: any) => (
+        {data.map((user: { name: string; email: string }) => (
           <div key={user.name} className="px-4 border">
             <h1 className="text-2xl font-bold">{user.name}</h1>
             <p className="text-lg font-bold">{user.email}</p>
