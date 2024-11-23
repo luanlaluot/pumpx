@@ -1,17 +1,16 @@
+import React from "react";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import cn from "@/utils/class-names";
+import { inter, lexendDeca } from "./fonts";
+import { JotaiProvider, ThemeProvider } from "@/app/shared/theme-provider";
+import { Toaster } from "react-hot-toast";
+import GlobalDrawer from "@/app/shared/drawer-views/container";
+import GlobalModal from "@/app/shared/modal-views/container";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +23,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        // to prevent any warning that is caused by third party extensions like Grammarly
+        suppressHydrationWarning
+        className={cn(inter.variable, lexendDeca.variable, "font-inter")}
       >
-        {children}
+        <ThemeProvider>
+          <JotaiProvider>{children}</JotaiProvider>
+          <Toaster />
+          <GlobalDrawer />
+          <GlobalModal />
+        </ThemeProvider>
       </body>
     </html>
   );
