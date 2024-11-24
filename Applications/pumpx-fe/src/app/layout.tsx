@@ -30,10 +30,12 @@ export default function RootLayout({
         className={cn(inter.variable, lexendDeca.variable, "font-inter")}
       >
         <ThemeProvider>
-          <JotaiProvider>{children}</JotaiProvider>
-          <Toaster />
-          <GlobalDrawer />
-          <GlobalModal />
+          <JotaiProvider>
+            {children}
+            <Toaster />
+            <GlobalDrawer />
+            <GlobalModal />
+          </JotaiProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -7,7 +7,7 @@ import NotificationDropdown from "./notification-dropdown";
 
 export default function HeaderMenuRight() {
   return (
-    <div className="ms-auto grid shrink-0 grid-cols-4 items-center gap-2 text-gray-700 xs:gap-3 xl:gap-4">
+    <div className="ms-auto grid shrink-0 grid-cols-3 items-center gap-2 text-gray-700 xs:gap-3 xl:gap-4">
       <NotificationDropdown>
         <ActionIcon
           aria-label="Notification"
@@ -38,7 +38,6 @@ export default function HeaderMenuRight() {
           />
         </ActionIcon>
       </MessagesDropdown>
-
       <ProfileMenu />
     </div>
   );

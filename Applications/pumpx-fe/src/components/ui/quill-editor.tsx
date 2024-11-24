@@ -1,9 +1,9 @@
-import ReactQuill, { type ReactQuillProps } from "react-quill";
+import ReactQuill from "react-quill-new";
 import { FieldError } from "rizzui";
 import cn from "@/utils/class-names";
 import "react-quill/dist/quill.snow.css";
 
-interface QuillEditorProps extends ReactQuillProps {
+interface QuillEditorProps extends ReactQuill.ReactQuillProps {
   error?: string;
   label?: React.ReactNode;
   className?: string;
